@@ -1,0 +1,41 @@
+.login-container{
+    margin-top: 10%;
+}
+.login-form-1{
+    padding: 5%;
+    background: #F3E5F5;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    opacity: 0.95;
+    width: 75%;
+    
+}
+.login-form-1 h3{
+    text-align: center;
+    color: #9b59b6;
+}
+
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+    margin: 0 0 0 25%;
+}
+.btnUpload
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+    
+}
+.login-form-1 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #9b59b6;
+}
+

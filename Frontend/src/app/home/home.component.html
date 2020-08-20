@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-md navbar-dark " style="background-color:#9b59b6">
+        <div class="col-md-10">
+            <h1 class="" style="color:#fff" href="#">ShareThis</h1>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-outline-light"  routerLink="/signin">SignUp</a>
+        </div>
+</nav>
+
+<div class="container login-container">
+    <div class="row">
+        
+        <div class="col-md-5 login-form-2">
+            <h3><b><i>Admin Login</i></b></h3>
+            <form [formGroup]="admLogin" (ngSubmit)="aLogin()">
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="email" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" formControlName="password" placeholder="Enter Password ">
+                </div>
+                <div class="form-group">
+                    <button  type="submit" class="btnSubmit" >Login</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-2"></div>
+        
+        <div class="col-md-5 login-form-1">
+            <h3><b><i>User Login</i></b></h3>
+            <form [formGroup]="usrLogin" (ngSubmit)="uLogin()"> 
+                <div class="form-group">
+                    <input type="text" formControlName="email" class="form-control" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Enter Password">
+                </div>
+                <div class="form-group">
+                    <button  type="submit" class="btnSubmit">Login</button>
+                </div>
+                <div class="form-group">
+                    <a href="#" class="ForgetPwd">Forgot Password?</a>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+                                                                                                                                                                                                                                                                                                                                                                                     

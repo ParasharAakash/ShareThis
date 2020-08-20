@@ -1,0 +1,38 @@
+<div>
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#9b59b6">
+        <div class="col-md-10">
+            <h1 class="" style="color:#fff" href="#">ShareThis</h1>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-outline-light"  routerLink="">Home</a>
+        </div>
+    </nav>
+
+
+<div class="container login-container">
+        
+        <div class="container  login-form-1">
+            <h3><b><i>User SignUp</i></b></h3>
+            <form [formGroup]="usrSignup" (ngSubmit)="Signup()"> 
+                <div class="form-group">
+                    <input type="text" formControlName="name" class="form-control" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" formControlName="email" class="form-control" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Enter Password">
+                </div>
+                <div class="form-group">
+                    <input type="file" formControlName="image" class="form-control" >
+                    <!-- <button class="btnUpload" (click)="onUpload()">Upload</button> -->
+                </div>
+                <div class="form-group">
+                    <button  type="submit" class="btnSubmit">SignUp</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+                                                                                                                                                                                                                                                                                                                                                                                     
