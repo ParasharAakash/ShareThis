@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../Services/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -12,7 +13,7 @@ export class UserComponent implements OnInit {
   id;
   search;
 
-  constructor(private AdminService: AdminService) { }
+  constructor(private AdminService: AdminService,private router: Router) { }
 
   ngOnInit(): void {
    
@@ -36,4 +37,12 @@ export class UserComponent implements OnInit {
     this.AllUsers();
     this.Allfriends();
 }
+home(){
+  this.router.navigate(['/user']);
+}
+
+share(){
+  this.router.navigate(['/share']);
+}
+
 }

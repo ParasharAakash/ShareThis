@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FileService } from '../../Services/file.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-share',
@@ -15,7 +16,7 @@ export class ShareComponent {
   upload = true;
   fileId = '';
   constructor(
-    private http: HttpClient,
+    private http: HttpClient,private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -67,5 +68,11 @@ export class ShareComponent {
     }
   }
 
-
+  home(){
+    this.router.navigate(['/user']);
+  }
+  
+  share(){
+    this.router.navigate(['/share']);
+  }
 }
