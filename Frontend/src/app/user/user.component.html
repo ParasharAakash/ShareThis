@@ -1,0 +1,83 @@
+<nav  class="navbar navbar-expand-lg navbar-dark bgcolor" style="background: rgb(46, 43, 43)">
+            
+    <div class="col-md-8">
+      <h1 class="" style="color:#fff" href="#">ShareThis</h1>
+  </div>
+ 
+    
+    
+  </nav>
+ 
+    <div class="container">
+  
+          <!-- Latest Users -->
+          <!-- <div class="card"> -->
+<input type="text" class="form-control m-3 border-info" name="search" placeholder="Search" [(ngModel)]="search"> 
+          
+              <h2>User's Detail</h2>
+          <div class="search-results">
+            <div class="card-body">
+              <table class="table table-dark table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Profile</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 
+                  <tr *ngFor='let user of users | filter: search; index as i'>
+  
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td><img src="http://127.0.0.1:3000/{{ user.image }}" height="50px" width="50px"></td>
+                    <td><Button class="btn btn-danger btn-block" (click)="Addfriends(user.id)">
+                      {{ user.frinedList ? 'Remove' : 'AddFriend' }} <i class="fa fa-ban"></i></Button>
+                  </tr>
+                
+                </tbody>
+              </table>
+            </div>
+        </div>
+       
+      </div>
+       
+    <div class="container">
+  
+      <!-- Latest Users -->
+      <!-- <div class="card"> -->
+     <h2>Friend's Detail</h2>
+  
+        
+
+        <div class="search-results">
+        <div class="card-body">
+          <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+              <tr *ngFor='let friend of friends | filter: search; index as i'>
+
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{friend.friendId.name}}</td>
+                <td>{{friend.friendId.email}}</td>
+                <td><img src="http://127.0.0.1:3000/{{ friend.friendId.image }}" height="50px" width="50px"></td>
+              </tr>
+            
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+   
+     

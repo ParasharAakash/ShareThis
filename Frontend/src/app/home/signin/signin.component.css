@@ -1,7 +1,7 @@
 .login-container{
     margin-top: 10%;
 }
-.login-form-1{
+.form{
     padding: 5%;
     background: #F3E5F5;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
@@ -10,7 +10,7 @@
     width: 75%;
     
 }
-.login-form-1 h3{
+.form h3{
     text-align: center;
     color: #9b59b6;
 }
@@ -33,7 +33,7 @@
     cursor: pointer;
     
 }
-.login-form-1 .btnSubmit{
+.form .btnSubmit{
     font-weight: 600;
     color: #fff;
     background-color: #9b59b6;

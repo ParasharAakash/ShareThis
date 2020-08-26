@@ -1,38 +1,34 @@
-<div>
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#9b59b6">
-        <div class="col-md-10">
-            <h1 class="" style="color:#fff" href="#">ShareThis</h1>
-        </div>
-        <div class="col-md-2">
-            <a class="btn btn-outline-light"  routerLink="">Home</a>
-        </div>
-    </nav>
-
-
-<div class="container login-container">
-        
-        <div class="container  login-form-1">
-            <h3><b><i>User SignUp</i></b></h3>
-            <form [formGroup]="usrSignup" (ngSubmit)="Signup()"> 
-                <div class="form-group">
-                    <input type="text" formControlName="name" class="form-control" placeholder="Enter Name">
-                </div>
-                <div class="form-group">
-                    <input type="text" formControlName="email" class="form-control" placeholder="Enter Email">
-                </div>
-                <div class="form-group">
-                    <input type="password" formControlName="password" class="form-control" placeholder="Enter Password">
-                </div>
-                <div class="form-group">
-                    <input type="file" formControlName="image" class="form-control" >
-                    <!-- <button class="btnUpload" (click)="onUpload()">Upload</button> -->
-                </div>
-                <div class="form-group">
-                    <button  type="submit" class="btnSubmit">SignUp</button>
-                </div>
-            </form>
-        </div>
-        
+<nav class="navbar navbar-expand-md navbar-dark " style="background-color:#9b59b6">
+    <div class="col-md-10">
+        <h1 class="" style="color:#fff" href="#">ShareThis</h1>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-outline-light" routerLink="/">Home</a>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-md-5 mx-auto form">
+        <h3><b><i>User SignUp</i></b></h3>
+        <form #signupForm (ngSubmit)="onSubmit(signupForm)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control" ngModel name="name" required />
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" class="form-control" ngModel name="email" required email />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" ngModel name="password" required />
+            </div>
+            <div class="form-group mb-3">
+                <label for="image">Image</label>
+                <input type="file" id="image" class="form-control" ngModel name="image" required />
+            </div>
+            <div>
+                <button class="btn btn-primary btnSubmit">Sign Up</button>
+            </div>
+        </form>
     </div>
 </div>
-                                                                                                                                                                                                                                                                                                                                                                                     

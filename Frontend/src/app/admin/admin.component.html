@@ -1,1 +1,67 @@
-<p>admin works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bgcolor container-fluid" style="background:rgb(46, 43, 43)">
+
+  <div class="col-md-8">
+    <h1 class="" style="color:#fff" href="#">ShareThis</h1>
+  </div>
+  <div class="col-md-2">
+    <a class="btn btn-outline-light text-white mr-2 about" (click)=about()>About Us</a>
+    <a class="btn btn-outline-light contact text-white" (click)=contact()>Contact Us</a>
+  </div>
+
+
+</nav>
+<h2><strong><em>User's Detail</em></strong></h2>
+<input type="text" class="form-control m-3 border-info" name="search" placeholder="Search" [(ngModel)]="search"> 
+<div class="container row">
+
+  <div class="col-md-12">
+
+    <div class="search-results">
+      <div class="card-body">
+        <table class="table table-striped  table-dark table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Profile</th>
+              <th scope="col">Block/Unblock</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor='let user of users; index as i'>
+
+              <th scope="row">{{ i+1 }}</th>
+              <td>{{user.name}}</td>
+              <td>{{user.email}}</td>
+              <td><img src="http://127.0.0.1:3000/{{ user.image }}" height="50px" width="50px"></td>
+              <td><Button class="btn btn-outline-light btn-block" (click)="toggleBlockedState(user.blocked, user.id)">
+                  {{ user.blocked ? 'Unblock' : 'Block' }} <i class="fa fa-ban"></i></Button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+
+      <div class="card-body card-group">
+        <div class="col-sm-6">
+          <div class="well dash-box border border-dark shadow p-3 mb-3 bg-white">
+            <h2><i class="fa fa-user"></i> {{ users.length }}</h2>
+            <h4>Total Users</h4>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="well dash-box border border-dark shadow p-3 mb-3 bg-white">
+            <h2><i class="fa fa-user"></i> {{ activeUsers }}</h2>
+            <h4>Active Users</h4>
+          </div>
+        </div>
+    </div>
+    </div>
+
+  </div>

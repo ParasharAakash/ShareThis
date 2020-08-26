@@ -3,8 +3,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 // const usersRoute = require('./api/routes/users');
-// const adminRoute = require('./api/routes/admin');
+const adminRoute = require('./server/Routes/admin');
 const homeRoute = require('./server/Routes/home');
+const userRoute = require('./server/Routes/users');
+const filesRoute = require('./server/Routes/file');
 // var config = require('./api/config');
 // const Url = config.mongoUrl
 
@@ -23,11 +25,25 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 
+app.use('/uploads', express.static('/uploads'));
 
-// app.use('/api/admin', adminRoute);
-app.use('/home', homeRoute);
-// app.use('/api/user', usersRoute);
+app.use('/uploads*', (req, res, next) => {
+    try {
+      res.sendFile(__dirname + '/uploads' + req.params[0]);
+      
+  
+    } catch (error) {
+      next();
+    }
+  });
 
+app.use('/home',homeRoute);
+
+app.use('/admin',adminRoute);
+
+app.use('/users',userRoute);
+
+app.use('/files',filesRoute);
 
 
 app.listen(PORT, () => {

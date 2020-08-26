@@ -9,6 +9,10 @@ import { Observable } from 'rxjs';
 export class LoginService {
   constructor(private http: HttpClient) { }
 
+  getToken(): any {
+    return localStorage.getItem('token') ? localStorage.getItem('token') : '';
+  }
+
   adminLogin(admin): Observable<any> {
     return this.http.post('http://localhost:3000/home/admin/login', admin);
   }
@@ -20,3 +24,4 @@ export class LoginService {
     return this.http.post('http://localhost:3000/home/user/signup', data);
   }
 }
+

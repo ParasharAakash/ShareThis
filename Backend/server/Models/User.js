@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const config = require('../config');
 
 const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -16,37 +17,41 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'UserName cannot be blank.']
     },
-    image:{
-        type : String
+    image: {
+        type: String,
+        required:true   
     },
-    friendlist:{
-        type:[],
-        default: " " /*[string]*/
-    },
-    sharedfile:
+    friendList: [{
+        friendId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null}
+    }],
+    sharedFile:
     {
-        type:[],
+        type: [],
         default: " "
     },
+    files: {
+        type: [],
+        default: [],
+      },
+    
     receivedfile:
     {
-        type:[],
+        type: [],
         default: " "
     },
     blocked: {
         type: Boolean,
-         default: false
-        },
-        online: {
-            type: Boolean,
-            default: false
-        },
-        verified: {
-            type: Boolean,
-            default: false
-        },
+        default: false
+    },
+    online: {
+        type: Boolean,
+        default: false
+    },
+    verified: {
+        type: Boolean,
+        default: false
+    },
 });
 
 const User = mongoose.model('User', userSchema);
-
 module.exports = User;

@@ -1,0 +1,104 @@
+<div class="container-fluid">
+    <div class="row header-section">
+      <span>Upload your Files </span>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-10 offset-1">
+        <div class="row card">
+          <div class="col-sm-12">
+            <h4>Upload Section</h4>
+            <hr />
+            <div id="fileSelector">
+              <form #form>
+                <div>
+                  <input type="file" name="files" multiple (change)="selectFiles($event)" />
+                </div>
+                <br />
+                <div>
+                  <button type="submit" class="btn btn-success" (click)="onSubmit(form)">
+                    Upload Files
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-10 offset-1">
+        <div class="row d-flex flex-row">
+          <button class="col-md-4 btn btn-info mr-2 ml-auto" (click)="toggle('upload')">
+            Uploades Files
+          </button>
+          <button class="col-md-4 btn btn-info mr-auto" (click)="toggle('shared')">
+            Shared with me
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-10 offset-1">
+        <div class="row d-flex flex-row card">
+          <div *ngIf="upload" class="col-md-12">
+            <strong>
+              <h4>Uploaded Files</h4>
+            </strong>
+            <hr />
+            <ul>
+              <li *ngFor="let file of filesList" class="d-flex flex-row">
+                <div class="col-md-9"><a href="http://127.0.0.1:3000/api/fileuploads/{{ file.filename }}" class="nav-link"
+                  target="blank">{{ file.filename }}</a></div>
+                <button class="btn-sm m-1 border-dark col-md-3 btn-secondary" (click)="openModel(file._id, modalForm)">
+                  Share With
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="!upload" class="col-md-12">
+            <strong>
+              <h4>Files Shared with me</h4>
+            </strong>
+            <hr />
+            <ul>
+              <li *ngFor="let file of sharedWithMe" class="">
+                <div class="col-md-12"><a href="http://127.0.0.1:3000/api/fileuploads/{{ file }}" class="nav-link"
+                    target="blank">{{ file }}</a></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <ng-template #modalForm>
+    <div class="container">
+      <div class="py-3 text-center">
+        <h2 class="text-dark">Share file</h2>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <form #shareForm method="POST" action="javascript:void(0)">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label for="email">Friend's email</label>
+                <input type="text" name="email" class="form-control border-info" id="email" placeholder="" value=""
+                  required />
+              </div>
+            </div>
+            <hr class="mb-4" />
+            <button (click)="shareFile($event, shareForm)" class="col-md-3 btn btn-outline-primary btn-block mb-3"
+              type="submit">
+              Share
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </ng-template> -->
+  

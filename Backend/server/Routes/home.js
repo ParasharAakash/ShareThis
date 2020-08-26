@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const homecontroller = require('../Controllers/Home');
 const homeController = require('../Controllers/Home');
-const bodyParser = require('body-parser');
-// const authenticate = require('../authenticate');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'public/images');
+        console.log(file);
+        cb(null, 'uploads');
+        
     },
 
     filename: (req, file, cb) => {
+        console.log(file);
         cb(null, file.originalname)
     }
 });
@@ -27,10 +27,12 @@ const upload = multer({ storage: storage, fileFilter: imageFileFilter});
 
 
 //authentication of admin login 
-router.post('/admin/login', homecontroller.admin_login);
+router.post('/admin/login', homeController.admin_login);
 
 router.post("/user/login", homeController.user_login);
 
-router.post("/user/signup",upload.single('imageFile'), homeController.user_signup);
+router.post("/user/signup",upload.single('image'), homeController.user_signup);
+
+
 
 module.exports = router;

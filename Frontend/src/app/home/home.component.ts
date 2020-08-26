@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
         }
       })
 
-    // this.router.navigate(['/admin']);
+    this.router.navigate(['/admin']);
   }
 
   uLogin() {
@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
         }
       })
 
-    // this.router.navigate(['/dashboard']);
+    this.router.navigate(['/user']);
   }
 
 

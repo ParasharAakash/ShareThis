@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require('../config');
 const User = require("../Models/User");
+const { jwtkey } = require("../config");
 
 exports.user_signup = (req, res, next) => {
   User.find({ email: req.body.email })
@@ -23,8 +24,8 @@ exports.user_signup = (req, res, next) => {
               _id: new mongoose.Types.ObjectId(),
               email: req.body.email,
               name: req.body.name,
-              password:req.body.password,
-              image:req.body.image
+              password: req.body.password,
+              image: req.file.path
             });
             user
               .save()
@@ -48,37 +49,40 @@ exports.user_signup = (req, res, next) => {
 
 
 exports.admin_login = (req, res, next) => {
-    console.log(req.body);
-    var authHeader = req.headers.authorization;
-    if (req.body.email == 'admin@123' && req.body.password == 'password') {
-        res.send("Authenticated");    //   next(); // authorized
-    } else {
-        var err = new Error('You are not authenticated!');
-        res.setHeader('WWW-Authenticate', 'Basic');
-        err.status = 401;
-        next(err);
-    }
+  console.log(req.body);
+  var authHeader = req.headers.authorization;
+  if (req.body.email == 'admin@123' && req.body.password == 'password') {
+    res.send("Authenticated");    //   next(); // authorized
+  } else {
+    var err = new Error('You are not authenticated!');
+    res.setHeader('WWW-Authenticate', 'Basic');
+    err.status = 401;
+    next(err);
+  }
 }
 
 
-exports.user_login = (req, res, next) => {
+
+exports.user_login = async (req, res, next) => {
   let userData = req.body
+    email=userData.email
   console.log(userData)
-  User.findOne({email: userData.email}, (err, user) => {
+  await User.findOne({ email }, (err, user) => {
     if (err) {
-      console.log(err)    
+      console.log(err)
     } else {
       if (!user) {
         res.status(401).send('Invalid Email')
-      } else 
-      if ( user.password !== userData.password) {
-        res.status(401).send('Invalid Password')
-      } else {
-        let payload = {subject: user._id}
-        let token = jwt.sign(payload, 'secretKey')
-        res.status(200).send({token})
-        console.log(token);
+      } else
+        if (user.password !== userData.password) {
+          res.status(401).send('Invalid Password')
+        } else {
+          let payload = { id: user._id }
+          let token = jwt.sign(payload, config.jwtkey);
+          res.status(200).send({ token })
+          console.log(token);
+        }
       }
-    }
-  })
+    })
+  await User.findOneAndUpdate({ email }, { online: true });
 }
